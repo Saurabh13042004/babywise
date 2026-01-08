@@ -1,0 +1,69 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { HelpCircle, MessageCircle, AlertTriangle, Wallet } from 'lucide-react';
+
+const ProblemSection: React.FC = () => {
+    const problems = [
+        {
+            icon: <HelpCircle size={32} className="text-blue-500" />,
+            title: "500+ products. Which ones matter?",
+            description: "Strollers, monitors, bottles... the list never ends. It's easy to feel lost."
+        },
+        {
+            icon: <MessageCircle size={32} className="text-purple-500" />,
+            title: "Everyone says something different",
+            description: "Your mom says one thing, TikTok says another. Who do you trust?"
+        },
+        {
+            icon: <AlertTriangle size={32} className="text-orange-500" />,
+            title: "What's hype vs. what's helpful?",
+            description: "Marketing makes everything look essential. Most of it isn't."
+        },
+        {
+            icon: <Wallet size={32} className="text-green-500" />,
+            title: "Limited budget, unlimited options",
+            description: "You want the best for your baby without breaking the bank."
+        }
+    ];
+
+    return (
+        <section className="py-20 bg-white relative overflow-hidden">
+            {/* Background Pattern */}
+            <div className="absolute inset-0 opacity-5 pointer-events-none"
+                style={{ backgroundImage: 'radial-gradient(#87CEEB 1px, transparent 1px)', backgroundSize: '20px 20px' }}>
+            </div>
+
+            <div className="container mx-auto px-6 md:px-20 lg:px-32 relative z-10">
+                <div className="text-center max-w-2xl mx-auto mb-16">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4">We Know It's <span className="text-[var(--color-secondary)]">Overwhelming</span></h2>
+                    <p className="text-lg text-gray-600">
+                        Every parent faces the same struggle. You're not alone in the chaos of baby gear shopping.
+                    </p>
+                </div>
+
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {problems.map((problem, index) => (
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1 }}
+                            className="bg-[var(--color-background)] p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col items-center text-center"
+                        >
+                            <div className="w-16 h-16 bg-white rounded-full shadow-sm flex items-center justify-center mb-6">
+                                {problem.icon}
+                            </div>
+                            <h3 className="text-xl font-bold mb-3">{problem.title}</h3>
+                            <p className="text-gray-600 text-sm">
+                                {problem.description}
+                            </p>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+};
+
+export default ProblemSection;

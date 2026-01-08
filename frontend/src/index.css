@@ -1,0 +1,61 @@
+/* Global Styles & Variables */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Nunito:wght@600;700;800&family=Quicksand:wght@500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #87CEEB;
+  --color-secondary: #FFB6C1;
+  --color-accent: #98D8C8;
+  --color-background: #FFFEF7;
+  --color-text: #333333;
+
+  --font-heading: 'Nunito', sans-serif;
+  --font-subheading: 'Quicksand', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-20px);
+    }
+
+    100% {
+      transform: translateY(0px);
+    }
+  }
+}
+
+:root {
+  /* Brand Colors - Keeping these for reference or inline styles if needed */
+  --color-primary: #87CEEB;
+  --color-secondary: #FFB6C1;
+  --color-accent: #98D8C8;
+  --color-background: #FFFEF7;
+  --color-text: #333333;
+  --color-text-light: #666666;
+  --color-white: #FFFFFF;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  color: var(--color-text);
+}
