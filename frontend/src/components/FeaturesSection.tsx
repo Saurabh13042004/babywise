@@ -37,7 +37,7 @@ const FeaturesSection: React.FC = () => {
     ];
 
     return (
-        <section className="py-32 bg-gradient-to-b from-white to-[#F0F8FF] relative overflow-hidden">
+        <section id="features" className="py-32 bg-gradient-to-b from-white to-[#F0F8FF] relative overflow-hidden scroll-mt-24">
             {/* Background Mesh */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
                 <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-purple-100/30 rounded-full blur-3xl"></div>
@@ -58,9 +58,9 @@ const FeaturesSection: React.FC = () => {
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className="bg-white/60 backdrop-blur-md p-8 rounded-3xl shadow-sm border border-white hover:shadow-xl transition-all hover:-translate-y-2 group"
+                            className="bg-white p-8 rounded-[2.5rem] border-2 border-dashed border-blue-300 hover:border-blue-400 hover:shadow-lg transition-all group"
                         >
-                            <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform">
+                            <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                                 {feature.icon}
                             </div>
                             <h3 className="text-xl font-bold mb-3 text-gray-800">{feature.title}</h3>

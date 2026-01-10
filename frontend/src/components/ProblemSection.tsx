@@ -27,7 +27,7 @@ const ProblemSection: React.FC = () => {
     ];
 
     return (
-        <section className="py-24 bg-white relative overflow-hidden">
+        <section id="why-babywise" className="py-24 bg-white relative overflow-hidden scroll-mt-24">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
                 style={{ backgroundImage: 'radial-gradient(#87CEEB 1px, transparent 1px)', backgroundSize: '30px 30px' }}>
@@ -49,9 +49,9 @@ const ProblemSection: React.FC = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className="bg-white p-8 rounded-3xl shadow-card hover:shadow-xl transition-all border border-gray-50 flex flex-col items-center text-center group"
+                            className="bg-white p-8 rounded-[2.5rem] border-2 border-dashed border-blue-200 hover:border-blue-300 hover:shadow-lg transition-all flex flex-col items-center text-center group"
                         >
-                            <div className="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                                 {problem.icon}
                             </div>
                             <h3 className="text-xl font-bold mb-4 text-gray-800">{problem.title}</h3>

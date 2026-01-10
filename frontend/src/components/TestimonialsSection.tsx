@@ -25,7 +25,7 @@ const TestimonialsSection: React.FC = () => {
     ];
 
     return (
-        <section className="py-32 bg-white">
+        <section id="stories" className="py-32 bg-white scroll-mt-24">
             <div className="container mx-auto px-6 md:px-20 lg:px-32">
                 <div className="text-center mb-20">
                     <h2 className="text-4xl md:text-5xl font-bold mb-6">Join Thousands of <span className="text-[var(--color-secondary)]">Smart Parents</span></h2>

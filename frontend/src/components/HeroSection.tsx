@@ -1,23 +1,48 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Check } from 'lucide-react';
+import { ArrowRight, Check, Loader2 } from 'lucide-react';
+import SuccessPopup from './SuccessPopup';
 
 const HeroSection: React.FC = () => {
   const [email, setEmail] = useState('');
-  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (email) {
-      localStorage.setItem('babywise_email', email);
-      setSubmitted(true);
-      setTimeout(() => setSubmitted(false), 5000); // Reset after 5s
-      setEmail('');
+      setLoading(true);
+      try {
+        const response = await fetch(import.meta.env.VITE_API_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email,
+            user_agent: navigator.userAgent,
+          }),
+        });
+
+        if (response.ok) {
+          setShowPopup(true);
+          setEmail('');
+        } else {
+          console.error('Registration failed');
+          // Optional: Show error toast
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#E0F7FA] via-[#F0F8FF] to-[#FFFEF7] pt-24 pb-48 md:pt-32 md:pb-64">
+    <section id="hero" className="relative overflow-hidden bg-gradient-to-b from-[#E0F7FA] via-[#F0F8FF] to-[#FFFEF7] min-h-[95vh] flex items-center pt-20 pb-10 scroll-mt-24">
+      <SuccessPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />
+
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
         <motion.div
@@ -59,35 +84,24 @@ const HeroSection: React.FC = () => {
             AI-powered advice that cuts through the hype. Shop smarter, not harder.
           </p>
 
-          {!submitted ? (
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto md:mx-0 relative z-20">
-              <input
-                type="email"
-                placeholder="Enter your email for early access"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="flex-1 px-6 py-4 rounded-full border-2 border-white focus:border-[var(--color-primary)] focus:outline-none shadow-lg text-lg bg-white/90 backdrop-blur-sm transition-all"
-              />
-              <button type="submit" className="btn-premium text-white px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 whitespace-nowrap cursor-pointer">
-                Get Early Access <ArrowRight size={20} />
-              </button>
-            </form>
-          ) : (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="bg-green-50 border border-green-200 text-green-700 px-6 py-4 rounded-xl inline-flex items-center gap-3 shadow-sm"
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto md:mx-0 relative z-20">
+            <input
+              type="email"
+              placeholder="Enter your email for early access"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              disabled={loading}
+              className="flex-1 px-6 py-4 rounded-full border-2 border-white focus:border-[var(--color-primary)] focus:outline-none shadow-lg text-lg bg-white/90 backdrop-blur-sm transition-all disabled:opacity-70"
+            />
+            <button
+              type="submit"
+              disabled={loading}
+              className="btn-premium text-white px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 whitespace-nowrap cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
             >
-              <div className="bg-green-100 p-2 rounded-full">
-                <Check size={20} className="text-green-600" />
-              </div>
-              <div>
-                <p className="font-bold">You're on the list!</p>
-                <p className="text-sm">Check your inbox for confirmation.</p>
-              </div>
-            </motion.div>
-          )}
+              {loading ? <Loader2 size={20} className="animate-spin" /> : <>Get Early Access <ArrowRight size={20} /></>}
+            </button>
+          </form>
 
           <div className="mt-10 flex items-center justify-center md:justify-start gap-4 text-sm text-gray-500 font-medium">
             <div className="flex -space-x-3">
@@ -108,7 +122,7 @@ const HeroSection: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="relative"
         >
-          <div className="relative z-10 rounded-[2.5rem] overflow-hidden shadow-soft animate-float border-4 border-white">
+          <div className="relative z-10 rounded-[2.5rem] overflow-hidden shadow-soft animate-float">
             <img
               src="https://kidioz.com/wp-content/uploads/2025/05/banner-8-5.avif"
               alt="Happy mom with baby"
@@ -157,8 +171,8 @@ const HeroSection: React.FC = () => {
 
       {/* Bottom Wave Divider */}
       <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-        <svg className="relative block w-full h-[100px] md:h-[150px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#FFFFFF"></path>
+        <svg className="relative block w-full h-[60px] md:h-[120px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+          <path fill="#FFFFFF" fillOpacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
         </svg>
       </div>
     </section>

@@ -25,7 +25,7 @@ const HowItWorksSection: React.FC = () => {
     ];
 
     return (
-        <section className="py-32 bg-white relative overflow-hidden">
+        <section id="how-it-works" className="py-32 bg-white relative overflow-hidden scroll-mt-24">
             <div className="container mx-auto px-6 md:px-20 lg:px-32 relative z-10">
                 <div className="text-center mb-24">
                     <h2 className="text-4xl md:text-5xl font-bold mb-6">Three Steps to <span className="text-[var(--color-primary)]">Stress-Free</span> Shopping</h2>
