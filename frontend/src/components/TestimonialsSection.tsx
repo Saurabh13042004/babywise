@@ -25,14 +25,14 @@ const TestimonialsSection: React.FC = () => {
     ];
 
     return (
-        <section className="py-20 bg-white">
+        <section className="py-32 bg-white">
             <div className="container mx-auto px-6 md:px-20 lg:px-32">
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4">Join Thousands of <span className="text-[var(--color-secondary)]">Smart Parents</span></h2>
-                    <p className="text-lg text-gray-600">Don't just take our word for it.</p>
+                <div className="text-center mb-20">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-6">Join Thousands of <span className="text-[var(--color-secondary)]">Smart Parents</span></h2>
+                    <p className="text-xl text-gray-600">Don't just take our word for it.</p>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-8">
+                <div className="grid md:grid-cols-3 gap-10">
                     {testimonials.map((testimonial, index) => (
                         <motion.div
                             key={index}
@@ -40,21 +40,22 @@ const TestimonialsSection: React.FC = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.2 }}
-                            className="bg-[var(--color-background)] p-8 rounded-2xl relative"
+                            className="flex flex-col h-full"
                         >
-                            <Quote className="absolute top-6 right-6 text-[var(--color-primary)] opacity-20" size={40} />
+                            <div className="bg-[var(--color-background)] p-8 rounded-t-3xl rounded-br-3xl rounded-bl-sm relative flex-1 shadow-sm border border-gray-100 mb-6">
+                                <Quote className="absolute top-6 right-6 text-[var(--color-primary)] opacity-20" size={40} />
+                                <p className="text-lg italic text-gray-700 relative z-10 leading-relaxed">"{testimonial.quote}"</p>
+                            </div>
 
-                            <p className="text-lg mb-6 italic text-gray-700 relative z-10">"{testimonial.quote}"</p>
-
-                            <div className="flex items-center gap-4">
+                            <div className="flex items-center gap-4 px-4">
                                 <img
                                     src={testimonial.image}
                                     alt={testimonial.author}
-                                    className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm"
+                                    className="w-14 h-14 rounded-full object-cover border-4 border-white shadow-md"
                                 />
                                 <div>
-                                    <h4 className="font-bold text-sm">{testimonial.author}</h4>
-                                    <p className="text-xs text-gray-500">{testimonial.role}</p>
+                                    <h4 className="font-bold text-gray-900">{testimonial.author}</h4>
+                                    <p className="text-sm text-gray-500 font-medium">{testimonial.role}</p>
                                 </div>
                             </div>
                         </motion.div>

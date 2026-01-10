@@ -27,16 +27,16 @@ const ProblemSection: React.FC = () => {
     ];
 
     return (
-        <section className="py-20 bg-white relative overflow-hidden">
+        <section className="py-24 bg-white relative overflow-hidden">
             {/* Background Pattern */}
-            <div className="absolute inset-0 opacity-5 pointer-events-none"
-                style={{ backgroundImage: 'radial-gradient(#87CEEB 1px, transparent 1px)', backgroundSize: '20px 20px' }}>
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
+                style={{ backgroundImage: 'radial-gradient(#87CEEB 1px, transparent 1px)', backgroundSize: '30px 30px' }}>
             </div>
 
             <div className="container mx-auto px-6 md:px-20 lg:px-32 relative z-10">
-                <div className="text-center max-w-2xl mx-auto mb-16">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4">We Know It's <span className="text-[var(--color-secondary)]">Overwhelming</span></h2>
-                    <p className="text-lg text-gray-600">
+                <div className="text-center max-w-3xl mx-auto mb-20">
+                    <h2 className="text-3xl md:text-5xl font-bold mb-6">We Know It's <span className="text-[var(--color-secondary)]">Overwhelming</span></h2>
+                    <p className="text-xl text-gray-600 leading-relaxed">
                         Every parent faces the same struggle. You're not alone in the chaos of baby gear shopping.
                     </p>
                 </div>
@@ -49,13 +49,13 @@ const ProblemSection: React.FC = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className="bg-[var(--color-background)] p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col items-center text-center"
+                            className="bg-white p-8 rounded-3xl shadow-card hover:shadow-xl transition-all border border-gray-50 flex flex-col items-center text-center group"
                         >
-                            <div className="w-16 h-16 bg-white rounded-full shadow-sm flex items-center justify-center mb-6">
+                            <div className="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                                 {problem.icon}
                             </div>
-                            <h3 className="text-xl font-bold mb-3">{problem.title}</h3>
-                            <p className="text-gray-600 text-sm">
+                            <h3 className="text-xl font-bold mb-4 text-gray-800">{problem.title}</h3>
+                            <p className="text-gray-600 text-sm leading-relaxed">
                                 {problem.description}
                             </p>
                         </motion.div>

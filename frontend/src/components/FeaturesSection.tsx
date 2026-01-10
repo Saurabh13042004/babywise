@@ -37,11 +37,17 @@ const FeaturesSection: React.FC = () => {
     ];
 
     return (
-        <section className="py-20 bg-gradient-to-b from-white to-[#F0F8FF]">
-            <div className="container mx-auto px-6 md:px-20 lg:px-32">
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4">Everything You Need in <span className="text-[var(--color-primary)]">One App</span></h2>
-                    <p className="text-lg text-gray-600">Smart tools to make parenting easier.</p>
+        <section className="py-32 bg-gradient-to-b from-white to-[#F0F8FF] relative overflow-hidden">
+            {/* Background Mesh */}
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+                <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-purple-100/30 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-blue-100/30 rounded-full blur-3xl"></div>
+            </div>
+
+            <div className="container mx-auto px-6 md:px-20 lg:px-32 relative z-10">
+                <div className="text-center mb-20">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-6">Everything You Need in <span className="text-[var(--color-primary)]">One App</span></h2>
+                    <p className="text-xl text-gray-600">Smart tools to make parenting easier.</p>
                 </div>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -52,13 +58,13 @@ const FeaturesSection: React.FC = () => {
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-all hover:-translate-y-1"
+                            className="bg-white/60 backdrop-blur-md p-8 rounded-3xl shadow-sm border border-white hover:shadow-xl transition-all hover:-translate-y-2 group"
                         >
-                            <div className="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center mb-4">
+                            <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform">
                                 {feature.icon}
                             </div>
-                            <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
-                            <p className="text-gray-600 text-sm">
+                            <h3 className="text-xl font-bold mb-3 text-gray-800">{feature.title}</h3>
+                            <p className="text-gray-600 text-sm leading-relaxed">
                                 {feature.description}
                             </p>
                         </motion.div>

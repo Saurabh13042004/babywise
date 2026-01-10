@@ -17,37 +17,44 @@ const CTASection: React.FC = () => {
     };
 
     return (
-        <section className="py-24 relative overflow-hidden text-white">
+        <section className="relative py-32 overflow-hidden text-white">
+            {/* Top Wave Divider */}
+            <div className="absolute top-0 left-0 w-full overflow-hidden leading-none rotate-180 z-20">
+                <svg className="relative block w-full h-[60px] md:h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#FFFFFF"></path>
+                </svg>
+            </div>
+
             {/* Background Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#87CEEB] to-[#FFB6C1] z-0"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-[#87CEEB] via-[#89CFF0] to-[#FFB6C1] z-0"></div>
 
             {/* Clouds Overlay */}
-            <div className="absolute inset-0 opacity-30 z-0" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'100\' height=\'100\' viewBox=\'0 0 100 100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z\' fill=\'%23ffffff\' fill-opacity=\'0.2\' fill-rule=\'evenodd\'/%3E%3C/svg%3E")' }}></div>
+            <div className="absolute inset-0 opacity-20 z-0" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'100\' height=\'100\' viewBox=\'0 0 100 100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z\' fill=\'%23ffffff\' fill-opacity=\'0.2\' fill-rule=\'evenodd\'/%3E%3C/svg%3E")' }}></div>
 
-            <div className="container mx-auto px-6 md:px-20 lg:px-32 relative z-10 text-center max-w-3xl mx-auto">
+            <div className="container mx-auto px-6 md:px-20 lg:px-32 relative z-10 text-center max-w-4xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                 >
-                    <h2 className="text-white mb-6 text-4xl md:text-5xl font-bold">Be the First to Know When We Launch</h2>
-                    <p className="text-xl text-white/90 mb-10">
+                    <h2 className="text-white mb-8 text-4xl md:text-6xl font-extrabold drop-shadow-sm">Be the First to Know When We Launch</h2>
+                    <p className="text-xl text-white/95 mb-12 font-medium max-w-2xl mx-auto">
                         Join the waitlist and get exclusive early access + a free baby gear checklist.
                     </p>
 
                     {!submitted ? (
-                        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto mb-8">
+                        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto mb-10">
                             <input
                                 type="email"
                                 placeholder="Enter your email address"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 required
-                                className="flex-1 px-6 py-4 rounded-full border-none focus:ring-4 focus:ring-white/30 shadow-lg text-gray-800 text-lg bg-white placeholder-gray-400 outline-none"
+                                className="flex-1 px-8 py-5 rounded-full border-none focus:ring-4 focus:ring-white/40 shadow-xl text-gray-800 text-lg bg-white placeholder-gray-400 outline-none transition-all"
                             />
                             <button
                                 type="submit"
-                                className="bg-white text-[var(--color-primary)] px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:bg-gray-50 transition-colors flex items-center justify-center gap-2 cursor-pointer"
+                                className="bg-white text-[var(--color-primary)] px-10 py-5 rounded-full font-bold text-lg shadow-xl hover:bg-gray-50 hover:scale-105 transition-all flex items-center justify-center gap-2 cursor-pointer"
                             >
                                 Get Early Access <ArrowRight size={20} />
                             </button>
@@ -56,9 +63,9 @@ const CTASection: React.FC = () => {
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="bg-white/20 backdrop-blur-md border border-white/40 text-white px-8 py-6 rounded-2xl inline-flex items-center gap-4 mb-8"
+                            className="bg-white/20 backdrop-blur-md border border-white/40 text-white px-8 py-6 rounded-2xl inline-flex items-center gap-4 mb-8 shadow-lg"
                         >
-                            <div className="bg-green-400 p-2 rounded-full">
+                            <div className="bg-green-400 p-2 rounded-full shadow-inner">
                                 <Check size={24} className="text-white" />
                             </div>
                             <div className="text-left">
@@ -68,7 +75,7 @@ const CTASection: React.FC = () => {
                         </motion.div>
                     )}
 
-                    <div className="flex items-center justify-center gap-2 text-white/80 text-sm">
+                    <div className="flex items-center justify-center gap-2 text-white/80 text-sm font-medium">
                         <Lock size={14} />
                         <span>We respect your privacy. No spam, ever.</span>
                     </div>
