@@ -1,23 +1,47 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Lock, Check } from 'lucide-react';
+import { ArrowRight, Lock, Check, Loader2 } from 'lucide-react';
+import SuccessPopup from './SuccessPopup';
 
 const CTASection: React.FC = () => {
     const [email, setEmail] = useState('');
-    const [submitted, setSubmitted] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (email) {
-            localStorage.setItem('babywise_email', email);
-            setSubmitted(true);
-            setTimeout(() => setSubmitted(false), 5000);
-            setEmail('');
+            setLoading(true);
+            try {
+                const response = await fetch(import.meta.env.VITE_API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email,
+                        user_agent: navigator.userAgent,
+                    }),
+                });
+
+                if (response.ok) {
+                    setShowPopup(true);
+                    setEmail('');
+                } else {
+                    console.error('Registration failed');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            } finally {
+                setLoading(false);
+            }
         }
     };
 
     return (
-        <section className="relative py-32 overflow-hidden text-white">
+        <section id="cta" className="relative py-32 overflow-hidden text-white scroll-mt-24">
+            <SuccessPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />
+
             {/* Top Wave Divider */}
             <div className="absolute top-0 left-0 w-full overflow-hidden leading-none rotate-180 z-20">
                 <svg className="relative block w-full h-[60px] md:h-[120px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
@@ -42,38 +66,24 @@ const CTASection: React.FC = () => {
                         Join the waitlist and get exclusive early access + a free baby gear checklist.
                     </p>
 
-                    {!submitted ? (
-                        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto mb-10">
-                            <input
-                                type="email"
-                                placeholder="Enter your email address"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                required
-                                className="flex-1 px-8 py-5 rounded-full border-none focus:ring-4 focus:ring-white/40 shadow-xl text-gray-800 text-lg bg-white placeholder-gray-400 outline-none transition-all"
-                            />
-                            <button
-                                type="submit"
-                                className="bg-white text-[var(--color-primary)] px-10 py-5 rounded-full font-bold text-lg shadow-xl hover:bg-gray-50 hover:scale-105 transition-all flex items-center justify-center gap-2 cursor-pointer"
-                            >
-                                Get Early Access <ArrowRight size={20} />
-                            </button>
-                        </form>
-                    ) : (
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            className="bg-white/20 backdrop-blur-md border border-white/40 text-white px-8 py-6 rounded-2xl inline-flex items-center gap-4 mb-8 shadow-lg"
+                    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto mb-10">
+                        <input
+                            type="email"
+                            placeholder="Enter your email address"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                            disabled={loading}
+                            className="flex-1 px-8 py-5 rounded-full border-none focus:ring-4 focus:ring-white/40 shadow-xl text-gray-800 text-lg bg-white placeholder-gray-400 outline-none transition-all disabled:opacity-70"
+                        />
+                        <button
+                            type="submit"
+                            disabled={loading}
+                            className="bg-white text-[var(--color-primary)] px-10 py-5 rounded-full font-bold text-lg shadow-xl hover:bg-gray-50 hover:scale-105 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
                         >
-                            <div className="bg-green-400 p-2 rounded-full shadow-inner">
-                                <Check size={24} className="text-white" />
-                            </div>
-                            <div className="text-left">
-                                <p className="font-bold text-xl">You're on the list!</p>
-                                <p className="opacity-90">We'll be in touch soon.</p>
-                            </div>
-                        </motion.div>
-                    )}
+                            {loading ? <Loader2 size={20} className="animate-spin text-[var(--color-primary)]" /> : <>Get Early Access <ArrowRight size={20} /></>}
+                        </button>
+                    </form>
 
                     <div className="flex items-center justify-center gap-2 text-white/80 text-sm font-medium">
                         <Lock size={14} />

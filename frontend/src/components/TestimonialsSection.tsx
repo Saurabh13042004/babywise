@@ -25,14 +25,14 @@ const TestimonialsSection: React.FC = () => {
     ];
 
     return (
-        <section id="stories" className="py-32 bg-white scroll-mt-24">
+        <section id="stories" className="py-20 md:py-32 bg-white scroll-mt-24">
             <div className="container mx-auto px-6 md:px-20 lg:px-32">
-                <div className="text-center mb-20">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6">Join Thousands of <span className="text-[var(--color-secondary)]">Smart Parents</span></h2>
-                    <p className="text-xl text-gray-600">Don't just take our word for it.</p>
+                <div className="text-center mb-16 md:mb-20">
+                    <h2 className="text-3xl md:text-5xl font-bold mb-6">Join Thousands of <span className="text-[var(--color-secondary)]">Smart Parents</span></h2>
+                    <p className="text-lg md:text-xl text-gray-600">Don't just take our word for it.</p>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-10">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
                     {testimonials.map((testimonial, index) => (
                         <motion.div
                             key={index}

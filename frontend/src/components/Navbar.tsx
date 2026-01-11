@@ -34,9 +34,9 @@ const Navbar: React.FC = () => {
                 }}
                 animate={hidden ? "hidden" : "visible"}
                 transition={{ duration: 0.35, ease: "easeInOut" }}
-                className={`fixed top-6 left-0 right-0 z-50 mx-auto w-[90%] md:w-fit transition-all duration-300`}
+                className={`fixed top-4 md:top-6 left-0 right-0 z-50 mx-auto w-[95%] md:w-fit transition-all duration-300`}
             >
-                <div className={`px-6 py-3 rounded-full flex items-center justify-between gap-8 md:gap-12 border ${scrolled
+                <div className={`px-6 py-3 rounded-full flex items-center justify-between gap-4 md:gap-12 border ${scrolled
                     ? "bg-white/80 backdrop-blur-md border-white/40 shadow-lg"
                     : "bg-white/50 backdrop-blur-sm border-transparent shadow-sm"
                     }`}>
@@ -60,9 +60,9 @@ const Navbar: React.FC = () => {
 
                     {/* CTA & Mobile Toggle */}
                     <div className="flex items-center gap-4">
-                        <button className="hidden md:block bg-gray-900 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-gray-800 transition-colors shadow-md">
+                        <a href="#cta" className="hidden md:block bg-gray-900 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-gray-800 transition-colors shadow-md">
                             Get Early Access
-                        </button>
+                        </a>
                         <button
                             className="md:hidden text-gray-800"
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -92,9 +92,9 @@ const Navbar: React.FC = () => {
                                 {link.name}
                             </a>
                         ))}
-                        <button className="bg-[var(--color-primary)] text-white px-8 py-4 rounded-full text-lg font-bold mt-4 shadow-lg">
+                        <a href="#cta" className="bg-[var(--color-primary)] text-white px-8 py-4 rounded-full text-lg font-bold mt-4 shadow-lg inline-block" onClick={() => setMobileMenuOpen(false)}>
                             Get Early Access
-                        </button>
+                        </a>
                     </div>
                 </motion.div>
             )}

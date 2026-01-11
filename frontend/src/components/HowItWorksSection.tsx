@@ -25,14 +25,14 @@ const HowItWorksSection: React.FC = () => {
     ];
 
     return (
-        <section id="how-it-works" className="py-32 bg-white relative overflow-hidden scroll-mt-24">
+        <section id="how-it-works" className="py-20 md:py-32 bg-white relative overflow-hidden scroll-mt-24">
             <div className="container mx-auto px-6 md:px-20 lg:px-32 relative z-10">
-                <div className="text-center mb-24">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6">Three Steps to <span className="text-[var(--color-primary)]">Stress-Free</span> Shopping</h2>
-                    <p className="text-xl text-gray-600">It's as easy as 1-2-3.</p>
+                <div className="text-center mb-16 md:mb-24">
+                    <h2 className="text-3xl md:text-5xl font-bold mb-6">Three Steps to <span className="text-[var(--color-primary)]">Stress-Free</span> Shopping</h2>
+                    <p className="text-lg md:text-xl text-gray-600">It's as easy as 1-2-3.</p>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-12 relative">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
                     {/* Connecting Line (Desktop) - Curved SVG */}
                     <div className="hidden md:block absolute top-16 left-[15%] right-[15%] h-20 -z-10 opacity-30">
                         <svg width="100%" height="100%" viewBox="0 0 800 100" preserveAspectRatio="none">
