@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Lock, Check, Loader2 } from 'lucide-react';
+import { ArrowRight, Lock, Loader2 } from 'lucide-react';
 import SuccessPopup from './SuccessPopup';
 
 const CTASection: React.FC = () => {
