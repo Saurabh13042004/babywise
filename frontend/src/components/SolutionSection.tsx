@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle2, ShieldCheck, PiggyBank, Sparkles, ArrowRight } from 'lucide-react';
+import { CheckCircle2, ShieldCheck, PiggyBank, Sparkles } from 'lucide-react';
 
 interface SolutionSectionProps {
     onOpenQuiz?: () => void;

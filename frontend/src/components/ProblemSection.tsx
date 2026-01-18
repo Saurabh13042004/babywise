@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { SearchX, CircleDollarSign, Clock, MessageSquareWarning, Frown, AlertCircle } from 'lucide-react';
 
 const ProblemSection = () => {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
@@ -65,7 +65,6 @@ const Navbar = () => {
                     display: 'flex',
                     alignItems: 'center',
                     gap: '2.5rem',
-                    '@media (max-width: 768px)': { display: 'none' }
                 }}>
                     <a href="#how-it-works" style={{
                         textDecoration: 'none',

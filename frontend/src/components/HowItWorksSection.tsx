@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { ClipboardList, Brain, Sparkles } from 'lucide-react';
 
 const HowItWorksSection = () => {

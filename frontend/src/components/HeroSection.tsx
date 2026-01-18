@@ -1,5 +1,4 @@
-import React from 'react';
-import { ArrowRight, Check, X, Star, Baby } from 'lucide-react';
+import { ArrowRight, Check, X, Baby } from 'lucide-react';
 
 const HeroSection = () => {
   return (

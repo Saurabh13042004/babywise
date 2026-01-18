@@ -25,7 +25,7 @@ const QuizModal: React.FC<QuizModalProps> = ({ isOpen, onClose }) => {
         }
     ];
 
-    const handleOptionSelect = (index: number) => {
+    const handleOptionSelect = (_index: number) => {
         if (step < quizQuestions.length) {
             setStep(step + 1);
         }

@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Car, BedDouble, Milk, Baby, Bath, Gamepad2, ArrowRight, Plus } from 'lucide-react';
 
 const CategoryExplorer = () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check, X, Minus, Trophy } from 'lucide-react';
+import { Check, X, Trophy } from 'lucide-react';
 
 const ComparisonSection = () => {
     const features = [

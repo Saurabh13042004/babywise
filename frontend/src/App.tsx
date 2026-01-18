@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
-import InteractiveTeaser from './components/InteractiveTeaser';
 import HowItWorksSection from './components/HowItWorksSection';
 import ProblemSection from './components/ProblemSection';
 import SolutionSection from './components/SolutionSection';
 import CategoryExplorer from './components/CategoryExplorer';
-import DifferentiatorsSection from './components/DifferentiatorsSection';
 import TestimonialsSection from './components/TestimonialsSection';
 import ComparisonSection from './components/ComparisonSection';
 import FAQSection from './components/FAQSection';
