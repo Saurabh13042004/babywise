@@ -1,95 +1,148 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, Lock, Loader2 } from 'lucide-react';
-import SuccessPopup from './SuccessPopup';
+import { ArrowRight, Sparkles, Star } from 'lucide-react';
 
-const CTASection: React.FC = () => {
+const CTASection = () => {
     const [email, setEmail] = useState('');
-    const [loading, setLoading] = useState(false);
-    const [showPopup, setShowPopup] = useState(false);
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSignup = (e: React.FormEvent) => {
         e.preventDefault();
-        if (email) {
-            setLoading(true);
-            try {
-                const response = await fetch(import.meta.env.VITE_API_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        email,
-                        user_agent: navigator.userAgent,
-                    }),
-                });
-
-                if (response.ok) {
-                    setShowPopup(true);
-                    setEmail('');
-                } else {
-                    console.error('Registration failed');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-            } finally {
-                setLoading(false);
-            }
-        }
+        alert(`Thanks for joining! We'll send updates to ${email}`);
+        setEmail('');
     };
 
     return (
-        <section id="cta" className="relative py-32 overflow-hidden text-white scroll-mt-24">
-            <SuccessPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />
+        <section className="final-cta-section" id="signup" style={{
+            background: 'linear-gradient(135deg, #1A365D 0%, #2B6CB0 100%)',
+            padding: '120px 2rem',
+            textAlign: 'center',
+            position: 'relative',
+            overflow: 'hidden',
+            color: 'white'
+        }}>
+            {/* Background Decorative Elements */}
+            <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                background: 'radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 50%)',
+                pointerEvents: 'none'
+            }}></div>
 
-            {/* Top Wave Divider */}
-            <div className="absolute top-0 left-0 w-full overflow-hidden leading-none rotate-180 z-20">
-                <svg className="relative block w-full h-[60px] md:h-[120px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
-                    <path fill="#FFFFFF" fillOpacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-                </svg>
-            </div>
+            <div className="final-cta-content" style={{
+                maxWidth: '800px',
+                margin: '0 auto',
+                position: 'relative',
+                zIndex: 2
+            }}>
+                <div style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    background: 'rgba(255, 255, 255, 0.1)',
+                    padding: '0.5rem 1rem',
+                    borderRadius: '50px',
+                    marginBottom: '2rem',
+                    border: '1px solid rgba(255, 255, 255, 0.2)'
+                }}>
+                    <Sparkles size={16} className="text-yellow-300" color="#F6E05E" />
+                    <span style={{ fontSize: '0.9rem', fontWeight: 600, letterSpacing: '0.05em' }}>LIMITED EARLY ACCESS</span>
+                </div>
 
-            {/* Background Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#87CEEB] via-[#89CFF0] to-[#FFB6C1] z-0"></div>
+                <h2 style={{
+                    fontFamily: "'DM Serif Display', serif",
+                    fontSize: '4rem',
+                    lineHeight: 1.1,
+                    marginBottom: '1.5rem',
+                    color: 'white'
+                }}>Stop Wasting Time & Money</h2>
 
-            {/* Clouds Overlay */}
-            <div className="absolute inset-0 opacity-20 z-0" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'100\' height=\'100\' viewBox=\'0 0 100 100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z\' fill=\'%23ffffff\' fill-opacity=\'0.2\' fill-rule=\'evenodd\'/%3E%3C/svg%3E")' }}></div>
+                <p style={{
+                    color: 'rgba(255, 255, 255, 0.9)',
+                    fontSize: '1.25rem',
+                    marginBottom: '3rem',
+                    lineHeight: 1.6,
+                    maxWidth: '600px',
+                    marginLeft: 'auto',
+                    marginRight: 'auto'
+                }}>
+                    Join the waitlist for BabyWise AI. Be among the first to get smart,
+                    honest recommendations tailored to your unique life.
+                </p>
 
-            <div className="container mx-auto px-6 md:px-20 lg:px-32 relative z-10 text-center max-w-4xl mx-auto">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                >
-                    <h2 className="text-white mb-8 text-4xl md:text-6xl font-extrabold drop-shadow-sm">Be the First to Know When We Launch</h2>
-                    <p className="text-xl text-white/95 mb-12 font-medium max-w-2xl mx-auto">
-                        Join the waitlist and get exclusive early access + a free baby gear checklist.
-                    </p>
+                <form className="email-signup" onSubmit={handleSignup} style={{
+                    display: 'flex',
+                    gap: '1rem',
+                    maxWidth: '500px',
+                    margin: '0 auto 2.5rem',
+                    position: 'relative'
+                }}>
+                    <input
+                        type="email"
+                        placeholder="Enter your email address"
+                        required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        style={{
+                            flex: 1,
+                            padding: '1.25rem 1.5rem',
+                            border: 'none',
+                            borderRadius: '50px',
+                            fontSize: '1.1rem',
+                            fontFamily: "'Karla', sans-serif",
+                            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                        }}
+                    />
+                    <button type="submit" style={{
+                        background: 'var(--coral)',
+                        color: 'white',
+                        padding: '1.25rem 2.5rem',
+                        border: 'none',
+                        borderRadius: '50px',
+                        fontWeight: 700,
+                        fontSize: '1.1rem',
+                        cursor: 'pointer',
+                        transition: 'all 0.3s ease',
+                        fontFamily: "'Karla', sans-serif",
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                        boxShadow: '0 10px 20px rgba(0, 0, 0, 0.2)',
+                        whiteSpace: 'nowrap'
+                    }}
+                        onMouseEnter={(e) => {
+                            e.currentTarget.style.transform = 'translateY(-2px)';
+                            e.currentTarget.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.3)';
+                        }}
+                        onMouseLeave={(e) => {
+                            e.currentTarget.style.transform = 'translateY(0)';
+                            e.currentTarget.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.2)';
+                        }}
+                    >
+                        Join Waitlist <ArrowRight size={20} />
+                    </button>
+                </form>
 
-                    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto mb-10">
-                        <input
-                            type="email"
-                            placeholder="Enter your email address"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                            disabled={loading}
-                            className="flex-1 px-8 py-5 rounded-full border-none focus:ring-4 focus:ring-white/40 shadow-xl text-gray-800 text-lg bg-white placeholder-gray-400 outline-none transition-all disabled:opacity-70"
-                        />
-                        <button
-                            type="submit"
-                            disabled={loading}
-                            className="bg-white text-[var(--color-primary)] px-10 py-5 rounded-full font-bold text-lg shadow-xl hover:bg-gray-50 hover:scale-105 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
-                        >
-                            {loading ? <Loader2 size={20} className="animate-spin text-[var(--color-primary)]" /> : <>Get Early Access <ArrowRight size={20} /></>}
-                        </button>
-                    </form>
-
-                    <div className="flex items-center justify-center gap-2 text-white/80 text-sm font-medium">
-                        <Lock size={14} />
-                        <span>We respect your privacy. No spam, ever.</span>
+                <div className="social-proof" style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '2rem',
+                    color: 'rgba(255, 255, 255, 0.8)',
+                    fontSize: '0.9rem'
+                }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <div style={{ display: 'flex' }}>
+                            {[1, 2, 3, 4, 5].map((_, i) => (
+                                <Star key={i} size={16} fill="#F6E05E" color="#F6E05E" />
+                            ))}
+                        </div>
+                        <span>Trusted by 10,000+ parents</span>
                     </div>
-                </motion.div>
+                    <div style={{ width: '1px', height: '20px', background: 'rgba(255, 255, 255, 0.2)' }}></div>
+                    <div>🔒 Secure & Spam-free</div>
+                </div>
             </div>
         </section>
     );

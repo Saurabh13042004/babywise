@@ -1,64 +1,128 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { HelpCircle, MessageCircle, AlertTriangle, Wallet } from 'lucide-react';
+import { SearchX, CircleDollarSign, Clock, MessageSquareWarning, Frown, AlertCircle } from 'lucide-react';
 
-const ProblemSection: React.FC = () => {
-    const problems = [
-        {
-            icon: <HelpCircle size={32} className="text-blue-500" />,
-            title: "500+ products. Which ones matter?",
-            description: "Strollers, monitors, bottles... the list never ends. It's easy to feel lost."
-        },
-        {
-            icon: <MessageCircle size={32} className="text-purple-500" />,
-            title: "Everyone says something different",
-            description: "Your mom says one thing, TikTok says another. Who do you trust?"
-        },
-        {
-            icon: <AlertTriangle size={32} className="text-orange-500" />,
-            title: "What's hype vs. what's helpful?",
-            description: "Marketing makes everything look essential. Most of it isn't."
-        },
-        {
-            icon: <Wallet size={32} className="text-green-500" />,
-            title: "Limited budget, unlimited options",
-            description: "You want the best for your baby without breaking the bank."
-        }
-    ];
-
+const ProblemSection = () => {
     return (
-        <section id="why-babywise" className="py-20 md:py-24 bg-white relative overflow-hidden scroll-mt-24">
-            {/* Background Pattern */}
-            <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
-                style={{ backgroundImage: 'radial-gradient(#87CEEB 1px, transparent 1px)', backgroundSize: '30px 30px' }}>
-            </div>
-
-            <div className="container mx-auto px-6 md:px-20 lg:px-32 relative z-10">
-                <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
-                    <h2 className="text-3xl md:text-5xl font-bold mb-6">We Know It's <span className="text-[var(--color-secondary)]">Overwhelming</span></h2>
-                    <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
-                        Every parent faces the same struggle. You're not alone in the chaos of baby gear shopping.
+        <section className="problem-section" style={{
+            background: 'linear-gradient(180deg, #FFF5F5 0%, #FFF 100%)',
+            padding: '100px 2rem',
+            position: 'relative',
+            overflow: 'hidden'
+        }}>
+            <div className="problem-content" style={{
+                maxWidth: '1200px',
+                margin: '0 auto',
+                position: 'relative',
+                zIndex: 2
+            }}>
+                <div className="section-header" style={{ textAlign: 'center', marginBottom: '4rem' }}>
+                    <div className="section-label" style={{
+                        fontSize: '0.875rem',
+                        color: 'var(--coral)',
+                        fontWeight: 700,
+                        letterSpacing: '0.15em',
+                        textTransform: 'uppercase',
+                        marginBottom: '1rem'
+                    }}>THE STRUGGLE</div>
+                    <h2 style={{
+                        fontFamily: "'DM Serif Display', serif",
+                        fontSize: '3.5rem',
+                        lineHeight: 1.2,
+                        marginBottom: '1.5rem',
+                        color: 'var(--soft-black)'
+                    }}>Why is Baby Shopping So Stressful?</h2>
+                    <p className="problem-subtitle" style={{
+                        fontSize: '1.25rem',
+                        color: 'var(--charcoal)',
+                        maxWidth: '700px',
+                        margin: '0 auto',
+                        opacity: 0.8
+                    }}>
+                        New parents spend 40+ hours researching products, only to end up more confused and
+                        overwhelmed than when they started.
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-                    {problems.map((problem, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                            className="bg-white p-8 rounded-[2.5rem] border-2 border-dashed border-blue-200 hover:border-blue-300 hover:shadow-lg transition-all flex flex-col items-center text-center group"
+                <div className="problem-cards" style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                    gap: '2rem'
+                }}>
+                    {[
+                        {
+                            icon: SearchX,
+                            title: 'Decision Paralysis',
+                            text: 'Thousands of products. Conflicting reviews. Everyone has a different opinion. Where do you even start?'
+                        },
+                        {
+                            icon: CircleDollarSign,
+                            title: 'Overhyped Products',
+                            text: 'Marketing makes everything seem essential. But do you really need a $300 wipe warmer?'
+                        },
+                        {
+                            icon: Clock,
+                            title: 'No Time to Research',
+                            text: 'Between doctor appointments and nursery prep, who has time to read 1,000 reviews?'
+                        },
+                        {
+                            icon: AlertCircle,
+                            title: 'One-Size-Fits-All Advice',
+                            text: 'Recommendations ignore your apartment size, budget, and lifestyle. What works for them won\'t work for you.'
+                        },
+                        {
+                            icon: Frown,
+                            title: 'Budget Anxiety',
+                            text: 'It\'s easy to blow $5,000 before baby arrives. Where should you splurge? Where can you save?'
+                        },
+                        {
+                            icon: MessageSquareWarning,
+                            title: 'Regretful Purchases',
+                            text: '75% of parents regret at least one major purchase. Learn from their mistakes, not yours.'
+                        }
+                    ].map((card, index) => (
+                        <div key={index} className="problem-card" style={{
+                            background: 'white',
+                            padding: '2.5rem',
+                            borderRadius: '20px',
+                            border: '1px solid rgba(255, 107, 107, 0.1)',
+                            transition: 'all 0.3s ease',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'flex-start'
+                        }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.transform = 'translateY(-5px)';
+                                e.currentTarget.style.boxShadow = '0 15px 30px rgba(255, 107, 107, 0.08)';
+                                e.currentTarget.style.borderColor = 'rgba(255, 107, 107, 0.3)';
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.transform = 'translateY(0)';
+                                e.currentTarget.style.boxShadow = 'none';
+                                e.currentTarget.style.borderColor = 'rgba(255, 107, 107, 0.1)';
+                            }}
                         >
-                            <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                                {problem.icon}
+                            <div style={{
+                                background: '#FFF5F5',
+                                padding: '1rem',
+                                borderRadius: '12px',
+                                marginBottom: '1.5rem',
+                                color: 'var(--coral)'
+                            }}>
+                                <card.icon size={32} strokeWidth={1.5} />
                             </div>
-                            <h3 className="text-xl font-bold mb-4 text-gray-800">{problem.title}</h3>
-                            <p className="text-gray-600 text-sm leading-relaxed">
-                                {problem.description}
-                            </p>
-                        </motion.div>
+                            <h3 style={{
+                                fontFamily: "'DM Serif Display', serif",
+                                fontSize: '1.5rem',
+                                marginBottom: '1rem',
+                                color: 'var(--soft-black)'
+                            }}>{card.title}</h3>
+                            <p style={{
+                                color: 'var(--charcoal)',
+                                lineHeight: 1.7,
+                                fontSize: '1rem',
+                                opacity: 0.9
+                            }}>{card.text}</p>
+                        </div>
                     ))}
                 </div>
             </div>
